@@ -1,0 +1,7 @@
+[master]
+rpi1.local
+
+[workers]
+rpi2.local
+rpi3.local
+rpi4.local

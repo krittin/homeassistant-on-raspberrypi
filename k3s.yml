@@ -1,0 +1,30 @@
+- hosts: all
+  become: yes
+  any_errors_fatal: yes
+
+  tasks:
+    - name: install requried packages
+      include_role: 
+        name: package
+
+    - iptables: 
+        flush: yes
+
+    - block:
+
+      - name: install k3s on master
+        shell: "curl -sfL https://get.k3s.io | sh -"
+
+      - name: get token for workers
+        shell: "cat /var/lib/rancher/k3s/server/token"
+        register: k3s_token
+
+      delegate_to: "{{ groups['master'][0] }}"
+      run_once: yes
+
+    - name: install k3s on workers
+      shell: "curl -sfL https://get.k3s.io | K3S_URL=\"https://{{ hostvars[groups['master'][0]]['ansible_default_ipv4']['address'] }}:6443\" K3S_TOKEN=\"{{ k3s_token.stdout }}\" sh -"
+      delegate_to: "{{ item }}"
+      run_once: yes
+      loop: "{{ groups['workers'] }}"
+

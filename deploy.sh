@@ -1,0 +1,1 @@
+time ansible-playbook -i inventory/pi k3s.yml
