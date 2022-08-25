@@ -13,7 +13,10 @@
     - block:
 
       - name: install k3s on master
-        shell: "curl -sfL https://get.k3s.io | sh -"
+        shell: "curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC=\"server --disable traefik,servicelb\" sh -"
+
+      - name: enable kubectl autocompletion
+        shell: "echo 'source <(kubectl completion bash)' >>~/.bashrc"
 
       - name: get token for workers
         shell: "cat /var/lib/rancher/k3s/server/token"
