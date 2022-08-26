@@ -1,3 +1,10 @@
 - name: install packages
   package:
     name: "{{ package_list }}"
+
+- name: install libraries 
+  pip:
+    name:
+      - kubernetes
+      - jsonpatch
+      - pyyaml

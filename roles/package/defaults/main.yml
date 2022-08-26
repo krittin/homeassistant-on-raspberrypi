@@ -2,3 +2,4 @@ package_list:
   - iptables
   - vim
   - telnet
+  - python3-pip
