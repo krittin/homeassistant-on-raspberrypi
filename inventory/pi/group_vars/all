@@ -1,1 +1,3 @@
 ansible_user: pi
+k8s_env:
+  KUBECONFIG: /etc/rancher/k3s/k3s.yaml
