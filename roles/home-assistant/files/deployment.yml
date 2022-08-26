@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: home-assistant
+  name: home-assistant-deploy
+  namespace: home-assistant
+spec:
+  selector:
+    matchLabels:
+      app: home-assistant
+  template:
+    metadata:
+      labels:
+        app: home-assistant
+    spec:
+      containers:
+      - image: ghcr.io/home-assistant/home-assistant:stable
+        name: home-assistant
+        ports:
+          - containerPort: 8123

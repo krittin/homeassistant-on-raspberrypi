@@ -1,0 +1,9 @@
+- name: "apply {{ item }}"
+  kubernetes.core.k8s:
+    definition: "{{ lookup('file', '{{ item }}') | from_yaml }}"
+    state: present
+  with_items:
+    - namespace.yml
+    - deployment.yml
+    - service.yml
+
