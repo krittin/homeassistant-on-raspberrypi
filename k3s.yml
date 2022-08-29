@@ -16,15 +16,14 @@
         shell: "curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC=\"server --disable traefik,servicelb\" sh -"
 
       - name: enable kubectl autocompletion
-        shell: "echo 'source <(kubectl completion bash)' >>~/.bashrc"
+        lineinfile:
+          path: /root/.bashrc
+          line: "source <(kubectl completion bash)"
 
       - name: get token for workers
         slurp:
           src: /var/lib/rancher/k3s/server/token
         register: k3s_token
-
-      - shell: "cat /var/lib/rancher/k3s/server/token"
-        register: from_file
 
       delegate_to: "{{ groups['master'][0] }}"
       run_once: yes
