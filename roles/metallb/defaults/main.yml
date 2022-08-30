@@ -1,6 +1,6 @@
 # Manifest file for installation from https://metallb.universe.tf/installation/#installation-by-manifest
-metallb_manifest: https://raw.githubusercontent.com/metallb/metallb/v0.13.4/config/manifests/metallb-native.yaml
-downloaded_metallb_manifest: /tmp/metallb-native.yaml
+metallb_manifest_url: https://raw.githubusercontent.com/metallb/metallb/v0.13.4/config/manifests/metallb-native.yaml
+metallb_manifest: /tmp/metallb-native.yaml
 
 # IPs for MetalLB to use for loadbalancer service
 ip_pool:
