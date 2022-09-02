@@ -6,4 +6,5 @@
     - namespace.yml
     - deployment.yml
     - service.yml
+    - pvc.yml
 
