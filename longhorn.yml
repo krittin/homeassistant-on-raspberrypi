@@ -1,0 +1,16 @@
+- hosts: all
+  become: yes
+  any_errors_fatal: yes
+  environment: "{{ k8s_env }}"
+
+  tasks:
+    - name: install prerequisites
+      include_role:
+        name: longhorn
+        tasks_from: prerequisites.yml
+
+    - name: install longhorn
+      include_role:
+        name: longhorn
+        tasks_from: install.yml
+      when: "'master' in group_names"
