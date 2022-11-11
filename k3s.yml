@@ -13,7 +13,7 @@
     - block:
 
       - name: install k3s on master
-        shell: "curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC=\"server --disable traefik,servicelb\" sh -"
+        shell: "curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC=\"server --disable traefik,servicelb\" INSTALL_K3S_VERSION=v1.24.7+k3s1 sh -"
 
       - name: enable kubectl autocompletion
         lineinfile:
