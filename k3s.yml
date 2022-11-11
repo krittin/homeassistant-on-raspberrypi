@@ -18,7 +18,10 @@
       - name: enable kubectl autocompletion
         lineinfile:
           path: /root/.bashrc
-          line: "source <(kubectl completion bash)"
+          line: "{{ item }}"
+        loop: 
+          - "source /etc/bash_completion"
+          - "source <(kubectl completion bash)"
 
       - name: get token for workers
         slurp:
