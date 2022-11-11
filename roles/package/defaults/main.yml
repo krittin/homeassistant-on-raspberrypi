@@ -3,3 +3,4 @@ package_list:
   - vim
   - telnet
   - python3-pip
+  - bash-completion
