@@ -5,6 +5,10 @@
   with_items:
     - namespace.yml
     - deployment.yml
-    - service.yml
     - pvc.yml
+
+- name: configure service
+  kubernetes.core.k8s:
+    template: service.yml.j2
+    state: present
 
