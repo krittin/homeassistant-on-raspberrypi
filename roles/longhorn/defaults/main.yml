@@ -1,4 +1,4 @@
-prerequisites:
+longhorn_prerequisites:
   - open-iscsi
   - nfs-common	
   - bash
