@@ -1,0 +1,5 @@
+- name: install from manifest
+  command: "kubectl apply -k {{ nfd_manifest_url }}"
+
+- name: wait until pods are ready
+  command: kubectl wait pod -n node-feature-discovery -l 'app in (nfd-master,nfd-worker)' --for=condition=Ready

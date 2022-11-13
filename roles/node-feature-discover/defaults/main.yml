@@ -1,0 +1,3 @@
+nfd_manifest_url: https://github.com/kubernetes-sigs/node-feature-discovery/deployment/overlays/default?ref=v0.11.3
+nfd_prerequisites:
+  - git
