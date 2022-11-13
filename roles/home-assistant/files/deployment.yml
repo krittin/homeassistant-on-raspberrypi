@@ -16,13 +16,20 @@ spec:
     spec:
       containers:
       - name: home-assistant
+        securityContext:
+          privileged: true
         image: ghcr.io/home-assistant/home-assistant:stable
         ports:
           - containerPort: 8123
         volumeMounts:
+          - name: zigbee-dongle
+            mountPath: /dev/ttyUSB0
           - name: configuration
             mountPath: /config
       volumes:
+      - name: zigbee-dongle
+        hostPath: 
+          path: /dev/ttyUSB0
       - name: configuration
         persistentVolumeClaim:
           claimName: home-assistant-pvc
