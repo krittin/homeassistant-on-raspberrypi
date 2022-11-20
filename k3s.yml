@@ -32,7 +32,7 @@
       run_once: yes
 
     - name: install k3s on workers
-      shell: "curl -sfL https://get.k3s.io | K3S_URL=\"https://{{ hostvars[groups['master'][0]]['ansible_default_ipv4']['address'] }}:6443\" K3S_TOKEN=\"{{ k3s_token['content'] | b64decode | trim }}\" sh -"
+      shell: "curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.24.7+k3s1 K3S_URL=\"https://{{ hostvars[groups['master'][0]]['ansible_default_ipv4']['address'] }}:6443\" K3S_TOKEN=\"{{ k3s_token['content'] | b64decode | trim }}\" sh -"
       delegate_to: "{{ item }}"
       run_once: yes
       loop: "{{ groups['workers'] }}"
