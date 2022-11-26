@@ -1,0 +1,9 @@
+- import_tasks: enable_memory_cgroup.yml
+  when: 'ansible_inventory_sources[0] | basename == "pi"'
+
+- name: install requried packages
+  include_role: 
+    name: package
+
+- iptables: 
+    flush: yes
