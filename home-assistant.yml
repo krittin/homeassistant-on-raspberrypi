@@ -8,6 +8,10 @@
       include_role: 
         name: package
 
+    - name: install NFD for labelling node with zigbee dongle
+      include_role:
+        name: node-feature-discover
+        
     - name: install home-assistant
       include_role:
         name: home-assistant
