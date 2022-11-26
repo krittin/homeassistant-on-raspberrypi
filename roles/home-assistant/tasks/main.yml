@@ -1,14 +1,16 @@
-- name: "apply {{ item }}"
+- name: create namespace, pvc
   kubernetes.core.k8s:
     definition: "{{ lookup('file', '{{ item }}') | from_yaml }}"
-    state: present
-  with_items:
+  loop:
     - namespace.yml
-    - deployment.yml
     - pvc.yml
 
-- name: configure service
+
+- name: deploy home assistant 
   kubernetes.core.k8s:
-    template: service.yml.j2
-    state: present
+    template: "{{ item }}"
+  loop:
+    - deployment.yml.j2
+    - service.yml.j2
+
 
